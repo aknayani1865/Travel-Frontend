@@ -96,7 +96,7 @@ function App() {
 							<Navigate to='/admin-dashboard' replace />
 						) : (
 							<DashboardPage1 />
-						)					}					}
+						)					}		
 				/>
 				<Route
 					path='/favorite-packages'
