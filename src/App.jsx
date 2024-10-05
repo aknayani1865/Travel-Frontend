@@ -73,13 +73,11 @@ const RedirectAuthenticatedUser = ({ children }) => {
 };
 
 function App() {
-	// const { isCheckingAuth, checkAuth } = useAuthStore();
+	const { isAuthenticated, user, checkAuth } = useAuthStore();
 
-	// useEffect(() => {
-	// 	checkAuth();
-	// }, [checkAuth]);
-
-	// if (isCheckingAuth) return <LoadingSpinner />;
+	useEffect(() => {
+		checkAuth();
+	}, [checkAuth]);
 
 	return (
 		<div
@@ -94,8 +92,11 @@ function App() {
 				<Route
 					path='/'
 					element={
+						isAuthenticated && user.role === "admin" ? (
+							<Navigate to='/admin-dashboard' replace />
+						) : (
 							<DashboardPage1 />
-					}
+						)					}					}
 				/>
 				<Route
 					path='/favorite-packages'
