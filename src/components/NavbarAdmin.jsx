@@ -14,8 +14,7 @@ function NavbarAdmin() {
         logout();
 
         // Redirect to the login page
-        navigate('/');
-        window.location.reload();
+        window.location.href = '/';
     };
 
     const handleNavigation = (path) => {
