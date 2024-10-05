@@ -15,6 +15,7 @@ function NavbarAdmin() {
 
         // Redirect to the login page
         navigate('/');
+        window.location.reload();
     };
 
     const handleNavigation = (path) => {
