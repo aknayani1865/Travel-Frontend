@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useAuthStore } from '../store/authStore';
 import { useNavigate } from 'react-router-dom';
 import NavbarUser from '../components/NavbarUser';
-import { Card, CardMedia, CardContent, Typography, Button, Stack, Divider, IconButton, CardActions, TextField } from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, Button, Stack, Divider, IconButton, CardActions, TextField , Grid, Container} from '@mui/material';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import LoadingSpinner from '../components/LoadingSpinner';
 import './DashboardPages.css'; // Import your CSS files here
@@ -33,19 +33,18 @@ const DashboardPage1 = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await axios.get('https://travel-backend-jr66.onrender.com/api/admin/packages');
+        const response = await axios.get('http://localhost:5000/api/admin/packages');
         setPackages(response.data);
         setLoading(false);
       } catch (err) {
         setError('Failed to fetch packages');
-        console.log(err)
         setLoading(false);
       }
     };
   
     const fetchFavorites = async () => {
       try {
-        const response = await axios.get(`https://travel-backend-jr66.onrender.com/api/admin/users/${user._id}/favorites`, config);
+        const response = await axios.get(`http://localhost:5000/api/admin/users/${user._id}/favorites`, config);
         setFavorites(response.data);
         setLoading(false);
       } catch (err) {
@@ -56,7 +55,7 @@ const DashboardPage1 = () => {
   
     const fetchAppliedPackages = async () => {
       try {
-        const response = await axios.get(`https://travel-backend-jr66.onrender.com/api/admin/user/${user._id}/bookings`, config);
+        const response = await axios.get(`http://localhost:5000/api/admin/user/${user._id}/bookings`, config);
         setAppliedPackages(response.data);
         setLoading(false);
       } catch (err) {
@@ -78,11 +77,11 @@ const DashboardPage1 = () => {
     try {
       if (favorites.some(fav => fav._id === pkg._id)) {
         // console.log(`Removing package ${pkg._id} from favorites`);
-        await axios.delete(`https://travel-backend-jr66.onrender.com/api/admin/users/${userId}/favorites/${pkg._id}`, config);
+        await axios.delete(`http://localhost:5000/api/admin/users/${userId}/favorites/${pkg._id}`, config);
         setFavorites(favorites.filter(fav => fav._id !== pkg._id));
       } else {
         // console.log(`Adding package ${pkg._id} to favorites`);
-        await axios.post(`https://travel-backend-jr66.onrender.com/api/admin/users/${userId}/favorites/${pkg._id}`, {}, config);
+        await axios.post(`http://localhost:5000/api/admin/users/${userId}/favorites/${pkg._id}`, {}, config);
         setFavorites([...favorites, pkg]);
       }
     } catch (err) {
