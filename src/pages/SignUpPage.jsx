@@ -44,7 +44,8 @@ const SignUpPage = () => {
   }, [error]);
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" className="min-h-screen bg-gradient-to-br
+    flex items-center justify-center relative overflow-hidden">
       <Toaster />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
