@@ -1,7 +1,7 @@
+// src/pages/LoginPage.jsx
 import { useState, useEffect } from "react";
-import { Mail, Lock, Loader } from "lucide-react";
+import { Mail, Lock } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import Input from "../components/Input";
 import { useAuthStore } from "../store/authStore";
 import toast, { Toaster } from "react-hot-toast";
 import { Button, Typography, TextField, Box, CircularProgress, Paper } from "@mui/material";
@@ -40,6 +40,7 @@ const LoginPage = () => {
       alignItems="center"
       sx={{
         background: "linear-gradient(135deg, #ece9e6, #ffffff)",
+        padding: 2,
       }}
     >
       <Toaster />
@@ -48,7 +49,7 @@ const LoginPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Paper elevation={10} sx={{ padding: 4, borderRadius: "16px", maxWidth: 400,width:"600px" }}>
+        <Paper elevation={10} sx={{ padding: 4, borderRadius: "16px", maxWidth: 400, width: '100%', mx: 'auto' }}>
           <Typography variant="h4" align="center" gutterBottom>
             Welcome Back
           </Typography>
@@ -63,7 +64,7 @@ const LoginPage = () => {
                 InputProps={{
                   startAdornment: <Mail style={{ marginRight: 8 }} />,
                 }}
-				sx={{ height: '40px', '& .MuiInputBase-input': { padding: '10px' } }}
+                sx={{ '& .MuiInputBase-input': { padding: '10px' } }}
               />
             </Box>
 
@@ -78,7 +79,7 @@ const LoginPage = () => {
                 InputProps={{
                   startAdornment: <Lock style={{ marginRight: 8 }} />,
                 }}
-				sx={{ height: '40px', '& .MuiInputBase-input': { padding: '10px' } }}
+                sx={{ '& .MuiInputBase-input': { padding: '10px' } }}
               />
             </Box>
 
