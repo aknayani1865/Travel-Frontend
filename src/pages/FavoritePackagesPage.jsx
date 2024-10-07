@@ -32,7 +32,7 @@ const FavoritePackagesPage = () => {
     };
 
     fetchFavorites();
-  }, [userId, config]);
+  }, [userId]);
 
   useEffect(() => {
     const fetchAppliedPackages = async () => {
@@ -47,7 +47,7 @@ const FavoritePackagesPage = () => {
     };
 
     fetchAppliedPackages();
-  }, [userId, config]);
+  }, [userId]);
 
   const handleRemoveFavorite = async (pkgId) => {
     try {
